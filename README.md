@@ -1,4 +1,8 @@
-# AtlasFind
+<h1 align="center">AtlasFind</h1>
+
+<p align="center">
+ <img height="300" src="https://user-images.githubusercontent.com/28122432/222305987-945eed43-d1fe-4b6b-9ea5-1446ce0730ec.png">
+</p>
 
 This project is an answer-based search engine that fetches and answers user questions based on content from the [No Man's Sky Wiki fandom](https://nomanssky.fandom.com/wiki/No_Man%27s_Sky_Wiki) page. The search engine is designed to provide quick and accurate answers to questions related to the game, such as information on planets, star systems, resources, creatures, and more.
 
