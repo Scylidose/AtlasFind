@@ -1,0 +1,27 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore generated model files
+models/
+
+# Ignore data files that are too large or contain sensitive information
+*.zip
+*.rar
+data/person_of_interest/raw/
+data/person_of_interest/cleaned/
+
+# Ignore all text files in season folders
+data/person_of_interest/*/[^/]*.txt
+
+# Ignore temporary files and caches
+*.log
+*.cache
+*.swp
+
+# Ignore system files and directories
+.DS_Store
+Thumbs.db
+
+# Ignore virtual environment
+venv/
