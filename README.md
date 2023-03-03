@@ -26,9 +26,9 @@ git clone https://github.com/Scylidose/AtlasFind.git
 2. Create and activate a new virtual environment:
 
 ```
-python3 -m venv env
-source env/bin/activate # on Linux or macOS
-.\env\Scripts\activate # on Windows
+python3 -m venv venv
+source venv/bin/activate # on Linux or macOS
+.\venv\Scripts\activate # on Windows
 ```
 
 3. Install the required Python packages:
