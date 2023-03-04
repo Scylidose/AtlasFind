@@ -5,6 +5,9 @@ __pycache__/
 # Ignore generated model files
 models/
 
+# Ignore stored data
+data/
+
 # Ignore data files that are too large or contain sensitive information
 *.zip
 *.rar
