@@ -6,7 +6,7 @@ import requests
 import pandas as pd
 
 
-def parse_xml(xml_file, output_file):
+def parse_extract_xml(xml_file, output_file):
     # Parse the XML file
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -43,13 +43,13 @@ def remove_duplicate_csv(output_file):
         writer.writerows(rows)
 
 
-def extract_text(url):
+def parse_html(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     return soup.get_text()
 
 
-def add_text_website(output_file):
+def extract_html_text(output_file):
     df = pd.read_csv(output_file)
-    df['Text'] = df['Link'].apply(extract_text)
+    df['Text'] = df['Link'].apply(parse_html)
     df.to_csv(output_file, index=False)
