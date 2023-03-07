@@ -1,4 +1,5 @@
 import csv
+import json
 from collections import OrderedDict
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
@@ -27,14 +28,14 @@ def parse_extract_xml(xml_file, output_file):
             writer.writerow([link])
 
 
-def remove_duplicate_csv(output_file):
+def remove_duplicate_csv(output_file, column_name):
     # Open the CSV file and read its contents into a list of dictionaries
     with open(output_file, mode='r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         rows = list(reader)
 
     # Use OrderedDict to remove duplicate rows based on a specific column
-    rows = list(OrderedDict((row['Link'], row) for row in rows).values())
+    rows = list(OrderedDict((row[column_name], row) for row in rows).values())
 
     # Open the CSV file in write mode and write the new rows to it
     with open(output_file, mode='w', newline='', encoding='utf-8') as file:
@@ -53,3 +54,25 @@ def extract_html_text(output_file):
     df = pd.read_csv(output_file)
     df['Text'] = df['Link'].apply(parse_html)
     df.to_csv(output_file, index=False)
+
+    remove_duplicate_csv(output_file, 'Text')
+    remove_duplicate_csv(output_file, 'Link')
+
+
+def json_to_csv(json_file, csv_file):
+    # Read the JSON file
+    with open(json_file) as f:
+        data = json.load(f)
+
+    # Extract all the keys
+    links = []
+    for item in data:
+        for key in item.keys():
+            links.append(key)
+
+    # Write the keys to a new CSV file
+    with open(csv_file, mode='w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Link'])
+        for link in links:
+            writer.writerow([link])
