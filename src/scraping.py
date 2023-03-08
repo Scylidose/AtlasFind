@@ -35,7 +35,7 @@ def contain_url_type(url):
 	url_types = ["Special:", "Talk:", "Category:",
 				 "Help:", "User:", "File:", "No_Mans_Sky_Wiki:",
 				 "community.fandom.com", "ja", "fr", "it",
-				 "es", "de"]
+				 "es", "de", "pt-br", "ru"]
 	return any([x.lower() in url.lower() for x in url_types])
 
 
