@@ -32,10 +32,24 @@ def contain_url_type(url):
 	Returns:
 		bool: True if the URL contains any of the specified URL types, False otherwise.
 	"""
-	url_types = ["Special:", "Talk:", "Category:",
-				 "Help:", "User:", "File:", "No_Mans_Sky_Wiki:",
-				 "community.fandom.com", "ja", "fr", "it",
-				 "es", "de", "pt-br", "ru"]
+	ignore_language = ["ja", "fr", "it", "es", "de", "pt-br", "ru"]
+
+	ignore_namespace = ["Special:", "Talk:", "Category:", "Category_talk:",
+				 		"Help:", "Help_talk:", "User:", "User_talk:",
+						"File:", "File_talk:", "Form:", "Form_talk:",
+						"No_Mans_Sky_Wiki:", "No_Mans_Sky_Wiki_talk:",
+						"MediaWiki:", "MediaWiki_talk:",
+						"Template:", "Template_talk:", "Forum:", "Forum_talk:",
+						"UserProfile:", "GeoJson:", "GeoJson_talk:", "User_blog:",
+						"User_bloc_comment:", "Blog:", "Blog_talk:", "Module:",
+						"Module_talk:", "Message_Wall:", "Thread:", "Message_Wall_Greeting:",
+						"Gadget:", "Gadget_talk:", "Gadget_definition:", "Gadget_definition_talk:",
+						"Map:", "Map_talk:", "Journal:", "Journal_talk:", "Archive_talk:"]
+
+	url_types = ["community.fandom.com"]
+	url_types.extend(ignore_language)
+	url_types.extend(ignore_namespace)
+
 	return any([x.lower() in url.lower() for x in url_types])
 
 
@@ -119,9 +133,9 @@ def check_websites(website, output_file):
 	# Add website WITH slash on end
 	dict_links = {website:"Unchecked"}
 
-	counter, counter2 = None, 0
-	while counter != 0:
-		counter2 += 1
+	counter, child_depth = None, 0
+	while counter != 0 and child_depth <= 2:
+		child_depth += 1
 		dict_links2 = get_subpage_links(dict_links, website)
 		
 		counter = sum(value == "Unchecked" for value in dict_links2.values())
