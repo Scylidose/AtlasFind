@@ -52,6 +52,7 @@ def preprocess_text(text):
 
     # Remove stopwords
     stop_words = set(stopwords.words("english"))
+    stop_words.remove("no")
     text_tokens = nltk.word_tokenize(text)
     filtered_text = [word for word in text_tokens if word.lower() not in stop_words]
     text = " ".join(filtered_text)
