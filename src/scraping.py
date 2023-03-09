@@ -89,6 +89,7 @@ def get_links(website_link, website):
 	dict_links = dict.fromkeys(list_links, "Unchecked")
 	return dict_links
 
+
 def get_subpage_links(l, website):
 	"""
 	Crawls all unchecked links in a given dictionary of links and
@@ -116,7 +117,8 @@ def get_subpage_links(l, website):
 		l = {**dict_links_subpages, **l}
 	return l
 
-def check_websites(website, output_file):
+
+def check_websites(website, output_file, child_depth = 0):
 	"""
 	Crawls all pages on a website, saves the links to a dictionary, and
 	writes the dictionary to a JSON file.
@@ -125,6 +127,7 @@ def check_websites(website, output_file):
         website (str): The base URL of the website to crawl.
         output_file (str): The name of the output JSON file to write the
 						   dictionary of links to.
+		child_depth (int): The depth of child page to retrieve the URL.
 
     Returns:
         None
@@ -132,12 +135,13 @@ def check_websites(website, output_file):
 	# Create dictionary of website
 	# Add website WITH slash on end
 	dict_links = {website:"Unchecked"}
+	print("EXPLORING AND SCRAPING : ", website, "\n")
 
-	counter, child_depth = None, 0
-	while counter != 0 and child_depth <= 2:
-		child_depth += 1
+	counter, check_depth = None, 0
+	while counter != 0 and check_depth <= child_depth:
+		check_depth += 1
 		dict_links2 = get_subpage_links(dict_links, website)
-		
+
 		counter = sum(value == "Unchecked" for value in dict_links2.values())
 		dict_links = dict_links2
 
