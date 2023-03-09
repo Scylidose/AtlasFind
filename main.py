@@ -16,11 +16,14 @@ def main():
     print("\n-----------------------\n")
     preprocess.add_preprocessed_text_website(output_file)
 
-    index = index.create_database(output_file, db_dir)
+    index_db = index.create_database(output_file, db_dir)
 
-    queryText = "What is the release date of No Man\'s sky?"
+    query_text = "What is the release date of No Man\'s sky?"
 
-    index = index.search_query(queryText, index)
+    documents = index.search_query(query_text, index_db)
+
+    model.answer_question(documents[0]['content'], query_text)
+
 
 if __name__ == '__main__':
     main()
