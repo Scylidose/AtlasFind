@@ -28,3 +28,6 @@ Thumbs.db
 
 # Ignore virtual environment
 venv/
+
+# Ignore environment variable
+.env
