@@ -31,3 +31,6 @@ venv/
 
 # Ignore environment variable
 .env
+
+# Ignore database
+db.*
