@@ -34,3 +34,9 @@ venv/
 
 # Ignore database
 db.*
+
+# Ignore built static folder
+website/static
+
+# Ignore Cache folder
+CACHE
