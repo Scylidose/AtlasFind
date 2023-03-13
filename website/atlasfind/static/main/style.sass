@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+$primary-color: #1e528e
+$secondary-color: #fbe300
+$background-color: #111111
+$text-color: #ffffff
+
+*
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+html 
+  font-size: 62.5%;
+
+
+body 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  color: $text-color;
+  background-color: $background-color;
+
+
+.container 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+
+
+h1 
+  margin-bottom: 2rem;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: $secondary-color;
+
+
+.search-form 
+  margin-bottom: 3rem;
+
+.search-btn 
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #4a90e2;
+  color: #fff;
+  cursor: pointer;
+
+
+.search-btn:hover 
+  background-color: darken($primary-color, 10%);
+
+
+.search-results 
+  display: none;
+  animation: typing 1s steps(20) forwards;
+
+
+@keyframes typing
+    from
+      width: 0;
+    
+    to 
+      width: 100%;
+    
+
+.search-results h2 
+  margin-bottom: 1
+
+.search-container 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+
+.search-box 
+  width: 400px;
+  margin-right: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  color: $primary-color;
+  background-color: #fff;
+
+.search-box:focus 
+  border: 2px solid #00b0ff;
+  outline: none;
+  box-shadow: 0 0 5px #00b0ff;
