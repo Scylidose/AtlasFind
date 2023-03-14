@@ -15,7 +15,11 @@ def search(request):
     search_query = request.GET.get('search_query', None)
     # perform search and retrieve results
     results = answer.answer_question(search_query)
+
     # prepare the data to be sent back to the client
+    if not results:
+        results = ''
+    
     data = {
         'results': results,
     }
