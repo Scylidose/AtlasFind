@@ -1,10 +1,14 @@
 <h1 align="center">AtlasFind</h1>
 
 <p align="center">
- <img height="300" src="https://user-images.githubusercontent.com/28122432/222305987-945eed43-d1fe-4b6b-9ea5-1446ce0730ec.png">
+ <img height="250" src="https://user-images.githubusercontent.com/28122432/222305987-945eed43-d1fe-4b6b-9ea5-1446ce0730ec.png">
 </p>
 
 This project is an answer-based search engine that fetches and answers user questions based on content from the [No Man's Sky Wiki fandom](https://nomanssky.fandom.com/wiki/No_Man%27s_Sky_Wiki) page. The search engine is designed to provide quick and accurate answers to questions related to the game, such as information on planets, star systems, resources, creatures, and more.
+
+<p align="center">
+<img width="500" alt="Capture d’écran 2023-03-14 à 15 08 25" src="https://user-images.githubusercontent.com/28122432/225151408-bab59e8d-f058-4df7-875f-fa9431222636.png">
+</p>
 
 ## Getting Started
 
@@ -12,7 +16,8 @@ This project is an answer-based search engine that fetches and answers user ques
 
 To run this project, you will need:
 
-* Python 3.6 or higher
+* Python (version 3.8.0 or higher)
+* Django (version 3.0 or highter)
 * The text stored in the [No Man's Sky Wiki fandom](https://nomanssky.fandom.com/wiki/No_Man%27s_Sky_Wiki) website
 
 ### Installation and Setup
@@ -38,6 +43,12 @@ pip3 install -r requirements.txt
 ```
 
 This will install all the necessary dependencies.
+
+4. Run project:
+
+```
+python manage.py runserver
+```
 
 ## Contributing
 
