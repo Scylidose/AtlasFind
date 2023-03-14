@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="search-container">
-<form action="{% url 'home' %}" method="GET">
-  <input class="search-box" type="text" name="search" placeholder="Search...">
-  <button id="search-button" class="search-btn" type="submit">Search</button>
-</form>
+  <form action="{% url 'home' %}" method="GET">
+    <input class="search-box" type="text" name="search" placeholder="Search...">
+    <button id="search-button" class="search-btn" type="submit">Search</button>
+  </form>
 </div>
+
 <div class="search-results">
 
 </div>
@@ -24,9 +25,8 @@
         }
 
         display_response = data.results
-        console.log(data);
 
-        $('.search-results').html(data.results);
+        $('.search-results').html("<h2>Answer : </h2>" + data.results);
         $('.search-results').show();
       }
     });
