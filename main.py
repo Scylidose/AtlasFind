@@ -1,8 +1,9 @@
-from src import extract, preprocess, scraping, index, model
+from src import extract, preprocess, scraping, answer, model, export_doc
 
 def main():
     website = "https://nomanssky.fandom.com/"
     websites_file = "data/websites.json"
+    documents_dir = "data/documents"
     output_file = "data/links.csv"
     db_dir = "data/whoosh"
     child_depth = 1
@@ -16,13 +17,16 @@ def main():
     print("\n-----------------------\n")
     preprocess.add_preprocessed_text_website(output_file)
 
-    index_db = index.create_database(output_file, db_dir)
-
     query_text = "What is the release date of No Man\'s sky?"
+    model_choice = "DeepPavlov"
 
-    documents = index.search_query(query_text, index_db)
+    if model_choice == "DeepPavlov":
+        model_object = model.configure_deeppavlov()
+    elif model_choice == "Haystack":
+        export_doc.export_documents(output_file, documents_dir)
+        model_object = model.configure_haystack(documents_dir)
 
-    model.answer_question(documents[0]['content'], query_text)
+    answer.answer_question(model_choice, model_object, query_text, output_file, db_dir)
 
 
 if __name__ == '__main__':
