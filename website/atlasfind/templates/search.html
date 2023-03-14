@@ -7,15 +7,7 @@
 </form>
 </div>
 <div class="search-results">
-  {% if results %}
-      <ul>
-      {% for result in results %}
-          <li>{{ result }}</li>
-      {% endfor %}
-      </ul>
-  {% else %}
-      <p>No results found.</p>
-  {% endif %}
+
 </div>
 <script>
   $('#search-button').click(function(event) {
@@ -27,8 +19,14 @@
         'query': query
       },
       success: function(data) {
-        $('.search-results').html(data);
-        $('.search-results').addClass('search-results');
+        if(data.results == ''){
+          data.results = "No results found."
+        }
+
+        display_response = data.results
+        console.log(data);
+
+        $('.search-results').html(data.results);
         $('.search-results').show();
       }
     });
