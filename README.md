@@ -57,6 +57,8 @@ This will install all the necessary dependencies.
 python manage.py runserver
 ```
 
+## References
+
 ## Contributing
 
 Contributions to this project are welcome. If you find a bug, have a feature request, or want to contribute code, please open an issue or pull request on the project's GitHub page.
