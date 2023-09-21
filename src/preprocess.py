@@ -73,8 +73,17 @@ def preprocess_text(text):
 
     return text
 
-
 def remove_common_text(output_file, texts_to_remove):
+    """
+    Remove common text values from a specified column in a CSV file and save the updated data.
+
+    Args:
+        output_file (str): The path to the CSV file to be processed and updated.
+        texts_to_remove (list): A list of text values to be removed from the specified column.
+
+    Returns:
+        None
+    """
     # Load the CSV file into a pandas DataFrame
     df = pd.read_csv(output_file)
 
@@ -106,3 +115,20 @@ def add_preprocessed_text_website(output_file):
     df.to_csv(output_file, index=False)
 
     remove_common_text(output_file, ["add category cancel save", "community content available cc by-nc-sa unless otherwise noted advertisement fan feed no man sky wiki starship freighter starbirth explore wikis universal conquest wiki let go luna wiki club wiki explore property fandom muthead futhead fanatical follow overview fandom career press contact term use privacy policy global sitemap local sitemap community community central support help sell info advertise medium kit fandomatic contact fandom apps take favorite fandom never miss beat no man sky wiki fandom game community view mobile site follow ig tiktok join fan lab", "no man sky wiki no man sky wiki explore main page page interactive map navigation main page community portal recent change random page admin noticeboard portal official site community site reddit playstation steam universe galaxy star system planet space station specie resource sentinel technology crafting freighter starship exocraft exosuit multi-tool base building blueprint visual catalogue creativity story mission industrial mining refining cooking tech tree currency additional journal civilized space galactic hub company faction portal lore gamepedia gamepedia support report bad ad help wiki contact fandom home fan central beta game anime movie tv video wikis explore wikis community central start wiki account register sign advertisement no man sky wiki page explore main page page interactive map navigation main page community portal recent change random page admin noticeboard portal official site community site reddit playstation steam universe galaxy star system planet space station specie resource sentinel technology crafting freighter starship exocraft exosuit multi-tool base building blueprint visual catalogue creativity story mission industrial mining refining cooking tech tree currency additional journal civilized space galactic hub company faction portal lore gamepedia gamepedia support report bad ad help wiki contact"])
+
+def truncate_text(text, max_tokens):
+    """
+    Truncate a given text to a specified maximum number of tokens.
+
+    Args:
+        text (str): The input text to be truncated.
+        max_tokens (int): The maximum number of tokens to retain in the truncated text.
+
+    Returns:
+        tuple: A tuple containing the truncated text and the count of tokens in the original text.
+    """
+    tokens = text.split()
+    if len(tokens) <= max_tokens:
+        return text, len(tokens)
+
+    return ' '.join(tokens[:max_tokens]), len(tokens)
